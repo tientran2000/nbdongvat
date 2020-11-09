@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nennhanbiet">
+<TextView
+    android:layout_width="320dp"
+    android:layout_height="70dp"
+    android:text="Con mèo"
+    android:textSize="35sp"
+    android:gravity="center"
+    android:background="@drawable/bovien"
+    android:layout_gravity="center"
+    android:layout_marginTop="80dp"
+    android:id="@+id/tvloihoi"
+    android:textColor="#15288F"
+    android:fontFamily="@font/blossom"/>
+    <ImageButton
+        android:layout_marginTop="20dp"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/meo"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/back"
+            android:background="@drawable/tron"
+            android:id="@+id/luilai"/>
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/loa"
+            android:background="@drawable/tron"
+            android:id="@+id/nghetiengkeu"/>
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/doc"
+            android:background="@drawable/tron"
+            android:id="@+id/nghecauhoi"/>
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ttrangchu"
+            android:background="@drawable/tron"
+            android:id="@+id/trangchu"/>
+        <ImageButton
+            android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/next"
+            android:background="@drawable/tron"
+            android:id="@+id/tieptheo"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="@drawable/nencauhoi"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/imgtgdv"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/tron"
+        android:src="@drawable/tgdv"
+        android:onClick="OnClick"/>
+
+    <ImageButton
+        android:id="@+id/imgkiemtra"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/tron"
+        android:src="@drawable/kiemtra"
+        android:onClick="OnClick"/>
+
+</LinearLayout>
