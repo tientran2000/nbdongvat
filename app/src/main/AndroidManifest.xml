@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Chonchude"/>
+        <activity android:name=".dongco"/>
+        <activity android:name=".dvduoinuoc"/>
+        <activity android:name=".longvu"/>
+        <activity android:name=".thunuoi"/>
+        <activity android:name=".thurung"/>
+        <activity android:name=".dvkhac"/>
+        <activity android:name=".chitietthunuoi"/>
+        <activity android:name=".Kiemtra"/>
     </application>
 
 </manifest>

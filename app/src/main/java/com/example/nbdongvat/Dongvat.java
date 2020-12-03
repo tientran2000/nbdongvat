@@ -3,7 +3,7 @@ package com.example.nbdongvat;
 import java.io.Serializable;
 
 public class Dongvat implements Serializable {
-    public Dongvat(int id, String ten, byte[] anh, byte[] tiengkeu, String chude) {
+    public Dongvat(int id, String ten, byte[] anh, String tiengkeu, String chude) {
         this.id = id;
         this.ten = ten;
         this.anh = anh;
@@ -40,11 +40,11 @@ public class Dongvat implements Serializable {
         this.anh = anh;
     }
 
-    public byte[] getTiengkeu() {
+    public String getTiengkeu() {
         return tiengkeu;
     }
 
-    public void setTiengkeu(byte[] tiengkeu) {
+    public void setTiengkeu(String tiengkeu) {
         this.tiengkeu = tiengkeu;
     }
 
@@ -58,6 +58,6 @@ public class Dongvat implements Serializable {
 
     String ten;
     byte[] anh;
-    byte [] tiengkeu;
+    String tiengkeu;
     String chude;
 }

@@ -40,11 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imgkiemtra:
                 i = new Intent(this, Kiemtra.class);
                 startActivity(i);
+                mediaPlayer.stop();
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
                 break;
 
             case R.id.imgtgdv:
                 i = new Intent(this, Chonchude.class);
                 startActivity(i);
+                mediaPlayer.stop();
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
                 break;
 
 //            case R.id.btndongvat:

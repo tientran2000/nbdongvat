@@ -34,8 +34,9 @@ public class dongco extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent it=new Intent(dongco.this,chitietthunuoi.class);
+                it.putExtra("iddv",arrList.get(position).getId());
                 startActivity(it);
-
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             }
         });
     }

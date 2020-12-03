@@ -8,13 +8,13 @@ public class cauhoi {
     public byte [] dapan3;
     public byte [] dapan4;
     public int dapandung;
-    public byte [] tiengkeu;
+    public String tiengkeu;
 
-    public byte[] getTiengkeu() {
+    public String getTiengkeu() {
         return tiengkeu;
     }
 
-    public void setTiengkeu(byte[] tiengkeu) {
+    public void setTiengkeu(String tiengkeu) {
         this.tiengkeu = tiengkeu;
     }
 
@@ -74,7 +74,7 @@ public class cauhoi {
         return dapandung;
     }
 
-    public cauhoi(int id, String loihoi, byte[] dapan1, byte[] dapan2, byte[] dapan3, byte[] dapan4, int dapandung, byte[] tiengkeu) {
+    public cauhoi(int id, String loihoi, byte[] dapan1, byte[] dapan2, byte[] dapan3, byte[] dapan4, int dapandung, String tiengkeu) {
         this.id = id;
         this.loihoi = loihoi;
         this.dapan1 = dapan1;

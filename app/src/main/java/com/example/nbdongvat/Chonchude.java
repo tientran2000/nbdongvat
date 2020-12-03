@@ -27,21 +27,31 @@ public class Chonchude extends AppCompatActivity {
             case R.id.thunuoi:
                 i = new Intent(this, thunuoi.class);
                 startActivity(i);
+
                 break;
 
-//            case R.id.btnhinhkhoi:
-//                i = new Intent(this, NbHinhKhoi.class);
-//                startActivity(i);
-//                break;
-//
-//            case R.id.btndongvat:
-//                i = new Intent(this, NbDongVat.class);
-//                startActivity(i);
-//                break;
-//            case R.id.btnbekiemtra:
-//                i = new Intent(this, BeKiemTra.class);
-//                startActivity(i);
-//                break;
+            case R.id.thurung:
+                i = new Intent(this, thurung.class);
+                startActivity(i);
+
+                break;
+
+            case R.id.duoinuoc:
+                i = new Intent(this, dvduoinuoc.class);
+                startActivity(i);
+                break;
+            case R.id.longvu:
+                i = new Intent(this, longvu.class);
+                startActivity(i);
+                break;
+            case R.id.dvkhac:
+                i = new Intent(this, dvkhac.class);
+                startActivity(i);
+                break;
+            case R.id.dongco:
+                i = new Intent(this, dongco.class);
+                startActivity(i);
+                break;
         }
     }
 }

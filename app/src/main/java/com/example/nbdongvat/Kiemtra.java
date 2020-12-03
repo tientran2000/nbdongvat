@@ -30,7 +30,7 @@ public class Kiemtra extends AppCompatActivity {
     private TextView tvCauHoi;
     ImageButton DaA, DaB, DaC, DaD,doc,tiengkeu,trangchu;
     int Dapandung, i;
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer,md;
     TextToSpeech textToSpeech;
     Dialog dialog;
     int luotchoi=2;
@@ -40,9 +40,9 @@ public class Kiemtra extends AppCompatActivity {
         setContentView(R.layout.kiemtra);
 
         AnhXa();
-        LoadQuestion();
+        LoadQuestion();event();
         ViewQuestion(i++);
-        event();
+
     }
 
     public void AnhXa() {
@@ -60,6 +60,7 @@ public class Kiemtra extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Doc();
+                md.pause();
             }
         });
 
@@ -73,7 +74,12 @@ public class Kiemtra extends AppCompatActivity {
         tiengkeu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            if(md!=null){
+                md.release();
+            }
+            int resId=getResources().getIdentifier(listCauHoi.get(i-1).getTiengkeu(),"raw",getPackageName());
+            md=MediaPlayer.create(Kiemtra.this,resId);
+            md.start();
             }
         });
     }
@@ -95,7 +101,7 @@ public void LoadQuestion() {
         ch.dapan3=c.getBlob(4);
         ch.dapan4=c.getBlob(5);
         ch.dapandung=c.getInt(6);
-        ch.tiengkeu=c.getBlob(7);
+        ch.tiengkeu=c.getString(7);
         listCauHoi.add(ch);
         c.moveToNext();
     }
@@ -182,6 +188,7 @@ public void LoadQuestion() {
         switch (v.getId()) {
 
             case R.id.dapanA:
+                md.pause();
                 if (R.id.dapanA != Dapandung) {
 
                     if(luotchoi>0){
@@ -205,6 +212,7 @@ public void LoadQuestion() {
                 }
                 break;
             case R.id.dapanB:
+                md.pause();
                 if (R.id.dapanB != Dapandung) {
 
                     if(luotchoi>0){
@@ -229,6 +237,7 @@ public void LoadQuestion() {
                 break;
 
             case R.id.dapanC:
+                md.pause();
                 if (R.id.dapanC != Dapandung) {
 
                     if(luotchoi>0){
@@ -252,6 +261,7 @@ public void LoadQuestion() {
                 }
                 break;
             case R.id.dapanD:
+                md.pause();
                 if (R.id.dapanD != Dapandung) {
 
                     if(luotchoi>0){
@@ -271,7 +281,7 @@ public void LoadQuestion() {
                         public void run() {
                             ViewQuestion(i++);
                         }
-                    }, 2500);
+                    }, 1500);
                 }
                 break;
         }

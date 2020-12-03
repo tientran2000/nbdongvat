@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
@@ -36,7 +38,8 @@ public class DongvatAdapter extends ArrayAdapter<Dongvat> {
         Dongvat ob = arr.get(position);
 //        tv1.setText(ob.id);
         img.setImageBitmap(b);
-
+        Animation a= AnimationUtils.loadAnimation(context,R.anim.zoom_in);
+        view.startAnimation(a);
 
         return view;
     }
