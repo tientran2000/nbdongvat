@@ -42,7 +42,9 @@ public class Kiemtra extends AppCompatActivity {
         AnhXa();
         LoadQuestion();event();
         ViewQuestion(i++);
-
+        if(i==9){
+Ketthuc();
+        }
     }
 
     public void AnhXa() {
@@ -59,9 +61,24 @@ public class Kiemtra extends AppCompatActivity {
         doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Doc();
-                md.pause();
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    phattieng();
+                    if(!md.isPlaying()){
+
+                        Doc();
+                    }
+                    if(md.isPlaying()){
+                        md.pause();
+                        Doc();
+                    }
+                }
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    Doc();
+                }
+
             }
+
+
         });
 
         trangchu.setOnClickListener(new View.OnClickListener() {
@@ -74,12 +91,15 @@ public class Kiemtra extends AppCompatActivity {
         tiengkeu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(md!=null){
-                md.release();
-            }
-            int resId=getResources().getIdentifier(listCauHoi.get(i-1).getTiengkeu(),"raw",getPackageName());
-            md=MediaPlayer.create(Kiemtra.this,resId);
-            md.start();
+
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    tiengkeu.setEnabled(true);
+                    phattieng();
+                    md.start();}
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    //tieng.setImageDrawable(bt_khong);
+                    tiengkeu.setEnabled(false);
+                }
             }
         });
     }
@@ -88,7 +108,7 @@ public void LoadQuestion() {
     db.copyDB2SDCard();
     cauhoi ch;
     listCauHoi=new ArrayList<cauhoi>();
-    String sql = "select * from cauhoi ";
+    String sql = "select * from cauhoi order by random() limit 10";
     Cursor c = db.getCursor(sql);
     c.moveToFirst();
     while (!c.isAfterLast()) {
@@ -107,18 +127,13 @@ public void LoadQuestion() {
     }
     //randomQ(listCauHoi);
 }
-
-    public cauhoi randomQ(ArrayList<cauhoi> questions) {
-        cauhoi q;
-        Random rd = new Random();
-        if (questions.size() > 0) {
-            int cs = rd.nextInt(questions.size());
-            q = questions.get(cs);
-            questions.remove(cs);
-            return q;
-        }
-        return null;
+public void phattieng(){
+    if(md!=null){
+        md.release();
     }
+    int resId=getResources().getIdentifier(listCauHoi.get(i-1).getTiengkeu(),"raw",getPackageName());
+    md=MediaPlayer.create(Kiemtra.this,resId);
+}
 
     public void ViewQuestion( int i) {
 
@@ -165,7 +180,24 @@ public void LoadQuestion() {
         mediaPlayer = MediaPlayer.create(this, nhac);
         mediaPlayer.start();
     }
-
+    public void Tongket() {
+        dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View view = layoutInflater.inflate(R.layout.tongket, null);
+        TextView tvFinish = (TextView) view.findViewById(R.id.ketthuc);
+        amthanh(R.raw.ketthuc);
+        Button btnFinish = (Button) view.findViewById(R.id.btnFinish);
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.setContentView(view);
+        dialog.show();
+    }
     public void Ketthuc() {
         dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
@@ -184,108 +216,7 @@ public void LoadQuestion() {
         dialog.setContentView(view);
         dialog.show();
     }
-    public void OnClick(View v) {
-        switch (v.getId()) {
 
-            case R.id.dapanA:
-                md.pause();
-                if (R.id.dapanA != Dapandung) {
-
-                    if(luotchoi>0){
-                        luotchoi = luotchoi - 1;
-                    }
-                    else if(luotchoi==0){
-                        Ketthuc();
-                    }
-
-                    amthanh(R.raw.thuacuoc);
-                } else {
-                    animnButon(DaA);
-                    amthanh(R.raw.traloidung);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            ViewQuestion(i++);
-                        }
-                    }, 2500);
-                }
-                break;
-            case R.id.dapanB:
-                md.pause();
-                if (R.id.dapanB != Dapandung) {
-
-                    if(luotchoi>0){
-                        luotchoi = luotchoi - 1;
-                    }
-                    else if(luotchoi==0){
-                        Ketthuc();
-                    }
-
-                    amthanh(R.raw.thuacuoc);
-                } else {
-                    animnButon(DaB);
-                    amthanh(R.raw.traloidung);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            ViewQuestion(i++);
-                        }
-                    }, 2500);
-                }
-                break;
-
-            case R.id.dapanC:
-                md.pause();
-                if (R.id.dapanC != Dapandung) {
-
-                    if(luotchoi>0){
-                        luotchoi = luotchoi - 1;
-                    }
-                    else if(luotchoi==0){
-                        Ketthuc();
-                    }
-
-                    amthanh(R.raw.thuacuoc);
-                } else {
-                    animnButon(DaC);
-                    amthanh(R.raw.traloidung);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            ViewQuestion(i++);
-                        }
-                    }, 2500);
-                }
-                break;
-            case R.id.dapanD:
-                md.pause();
-                if (R.id.dapanD != Dapandung) {
-
-                    if(luotchoi>0){
-                        luotchoi = luotchoi - 1;
-                    }
-                    else if(luotchoi==0){
-                        Ketthuc();
-                    }
-
-                    amthanh(R.raw.thuacuoc);
-                } else {
-                    animnButon(DaD);
-                    amthanh(R.raw.traloidung);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            ViewQuestion(i++);
-                        }
-                    }, 1500);
-                }
-                break;
-        }
-    }
     public void Doc() {
         textToSpeech = new TextToSpeech(Kiemtra.this, new TextToSpeech.OnInitListener() {
             @Override
@@ -302,5 +233,91 @@ public void LoadQuestion() {
             }
         });
     }
+public void chon(int v,ImageButton img){
+    if (v!= Dapandung) {
 
+        if(luotchoi>0){
+            luotchoi = luotchoi - 1;
+        }
+        else if(luotchoi==0){
+            Ketthuc();
+        }
+
+        amthanh(R.raw.thuacuoc);
+    } else {
+        if(i<9){
+            animnButon(img);
+            amthanh(R.raw.traloidung);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewQuestion(i++);
+                }
+            }, 1500);
+        }
+        if (i == 9) {
+            Tongket();
+        }
+    }
+}
+    public void OnClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.dapanA:
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    phattieng();
+                    if (md.isPlaying()) {
+                        md.pause();
+                    } else {
+                        chon(R.id.dapanA,DaA);
+                    }
+                }
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    chon(R.id.dapanA,DaA);
+                }
+                break;
+            case R.id.dapanB:
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    phattieng();
+                    if (md.isPlaying()) {
+                        md.pause();
+                    } else {
+                        chon(R.id.dapanB,DaB);
+                    }
+                }
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    chon(R.id.dapanB,DaB);
+                }
+                break;
+
+            case R.id.dapanC:
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    phattieng();
+                    if (md.isPlaying()) {
+                        md.pause();
+                    } else {
+                        chon(R.id.dapanC,DaC);
+                    }
+                }
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    chon(R.id.dapanC,DaC);
+                }
+                break;
+            case R.id.dapanD:
+                if(!listCauHoi.get(i-1).getTiengkeu().equals("")) {
+                    phattieng();
+                    if (md.isPlaying()) {
+                        md.pause();
+                    } else {
+                        chon(R.id.dapanD,DaD);
+                    }
+                }
+                if(listCauHoi.get(i-1).getTiengkeu().equals("")){
+                    chon(R.id.dapanD,DaD);
+                }
+
+                break;
+        }
+    }
 }

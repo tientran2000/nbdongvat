@@ -23,7 +23,7 @@
         <activity android:name=".thunuoi"/>
         <activity android:name=".thurung"/>
         <activity android:name=".dvkhac"/>
-        <activity android:name=".chitietthunuoi"/>
+        <activity android:name=".chitietdongvat"/>
         <activity android:name=".Kiemtra"/>
     </application>
 

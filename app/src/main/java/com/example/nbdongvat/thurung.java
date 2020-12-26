@@ -33,7 +33,7 @@ public class thurung extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent it=new Intent(thurung.this,chitietthunuoi.class);
+                Intent it=new Intent(thurung.this, chitietdongvat.class);
                 it.putExtra("iddv",arrList.get(position).getId());
                 startActivity(it);
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
