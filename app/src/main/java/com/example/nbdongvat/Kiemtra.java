@@ -134,26 +134,35 @@ public void phattieng(){
     int resId=getResources().getIdentifier(listCauHoi.get(i-1).getTiengkeu(),"raw",getPackageName());
     md=MediaPlayer.create(Kiemtra.this,resId);
 }
-
+    public void imgleft(ImageButton btn) {
+        Animation animationButton = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.left);
+        btn.startAnimation(animationButton);
+    }
+    public void imgright(ImageButton btn) {
+        Animation animationButton = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.right);
+        btn.startAnimation(animationButton);
+    }
     public void ViewQuestion( int i) {
 
 
         Doc();
         tvCauHoi.setText(listCauHoi.get(i).getLoihoi());
+
         Bitmap a = BitmapFactory.decodeByteArray(listCauHoi.get(i).getDapan1(), 0, listCauHoi.get(i).getDapan1().length);
         DaA.setImageBitmap(a);
         DaA.setEnabled(true);
+        imgleft(DaA);
 
         Bitmap b = BitmapFactory.decodeByteArray(listCauHoi.get(i).getDapan2(), 0, listCauHoi.get(i).getDapan2().length);
         DaB.setImageBitmap(b);
         DaB.setEnabled(true);
-
+        imgright(DaB);
         Bitmap c = BitmapFactory.decodeByteArray(listCauHoi.get(i).getDapan3(), 0, listCauHoi.get(i).getDapan3().length);
         DaC.setImageBitmap(c);
-        DaC.setEnabled(true);
+        DaC.setEnabled(true);imgleft(DaC);
         Bitmap d = BitmapFactory.decodeByteArray(listCauHoi.get(i).getDapan4(), 0, listCauHoi.get(i).getDapan4().length);
         DaD.setImageBitmap(d);
-        DaD.setEnabled(true);
+        DaD.setEnabled(true);imgright(DaD);
 
 
         switch (listCauHoi.get(i).getDapandung()) {
@@ -243,11 +252,11 @@ public void chon(int v,ImageButton img){
             Ketthuc();
         }
 
-        amthanh(R.raw.thuacuoc);
+        amthanh(R.raw.sai);
     } else {
         if(i<9){
             animnButon(img);
-            amthanh(R.raw.traloidung);
+            amthanh(R.raw.dung);
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

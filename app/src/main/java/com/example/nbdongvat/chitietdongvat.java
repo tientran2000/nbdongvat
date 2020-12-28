@@ -39,35 +39,8 @@ public class chitietdongvat extends AppCompatActivity {
         anhxa();getDrawable();
         Event();
         db.copyDB2SDCard();
-//        Bundle bundle = getIntent().getExtras();
-//        id = bundle.getInt("iddv");
-//        Cursor cursor = db.getCursor("SELECT * FROM dongvat where id ='" + id + "'");
-//
-//        cursor.moveToFirst();
-//        s = new Dongvat();
-//        s.setId(cursor.getInt(0));
-//        s.setTen(cursor.getString(1));
-//        s.setAnh(cursor.getBlob(2));
-//        s.setTiengkeu(cursor.getString(3));
-//        s.setChude(cursor.getString(4));
-//
-//        tendv.setText(""+s.getTen());
-//        Bitmap a = BitmapFactory.decodeByteArray(s.getAnh(), 0, s.getAnh().length);
-//        anh.setImageBitmap(a);
-        //phattieng();
+
 laydl();
-        lui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //dvTruoc();
-            }
-        });
-        tiep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //dvSau();
-            }
-        });
 
     }
     public void laydl(){
@@ -152,11 +125,9 @@ laydl();
     public void anhxa(){
         tendv=findViewById(R.id.tvten);
         anh=findViewById(R.id.anhct);
-        lui=findViewById(R.id.luilai);
         tieng=findViewById(R.id.nghetiengkeu);
         docten=findViewById(R.id.ngheten);
         trangchu=findViewById(R.id.trangchu);
-        tiep=findViewById(R.id.tieptheo);
     }
     public void Doc() {
         textToSpeech = new TextToSpeech(chitietdongvat.this, new TextToSpeech.OnInitListener() {

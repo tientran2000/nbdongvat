@@ -7,7 +7,6 @@
 <ImageView
     android:layout_width="250dp"
     android:layout_height="200dp"
-
     android:id="@+id/itemanh"
     android:scaleType="fitXY"
     android:layout_gravity="center"
